@@ -38,6 +38,7 @@ public class Poll {
     public Poll(int id, String question, User puplisher, int validUntil){
         this.id = id;
         this.question = question;
+        this.options = new ArrayList<>();
         this.publishedAt = Instant.now();
         this.validUntil = Instant.now().plus(validUntil, ChronoUnit.MINUTES);
         this.puplisher = puplisher;
