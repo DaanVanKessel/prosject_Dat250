@@ -9,11 +9,13 @@ import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
-@RestController
+@Controller
+@CrossOrigin
 public class PollController {
 
     private Repository repository;
@@ -22,47 +24,47 @@ public class PollController {
         this.repository = repository;
     }
 
-    /*
 
-    public PollController(@Autowired PollManager pollManager) {
-        this.pollManager = pollManager;
+/*
+    public PollController(@Autowired Repository repository) {
+        this.repository = repository;
     }
 
     @GetMapping("/polls")
     public HashMap<Poll, List<String>> getPolls(){
-        return pollManager.getPolls();
+        return repository.getPolls();
     }
     @GetMapping("/users")
     public HashMap<Integer, User> getUsers(){
-        return pollManager.getUsers();
+        return repository.getUsers();
     }
 
     @PostMapping("/users")
     public ResponseEntity<User> addUser(@RequestBody User user){
-        pollManager.getUsers().put(getUsers().size(),user);
+        repository.getUsers().put(getUsers().size(),user);
         return ResponseEntity.created(URI.create("/users/" + user)).body(user);
     }
 
     @PostMapping("/polls")
     public ResponseEntity<Poll> addPoll(@RequestParam(name = "question") String question, @RequestParam(name = "validUntil") int validUntil, @RequestBody ArrayList<String> options){
         Poll poll = new Poll(question,validUntil);
-        pollManager.getPolls().put(poll, options);
+        repository.getPolls().put(poll, options);
         return ResponseEntity.created(URI.create("/polls/" + question)).body(poll);
     }
 
     @DeleteMapping("/polls")
     public void deletePoll(@RequestBody Poll poll){
-        pollManager.getPolls().remove(poll);
+        repository.getPolls().remove(poll);
     }
 
     @GetMapping("users/{user}/vote")
     public VoteOption getUserVote( @PathVariable String user){
-        return pollManager.getVotes().get(user);
+        return repository.getVotes().get(user);
     }
 
     @PostMapping("/users/{username}/vote")
     public ResponseEntity<VoteOption> addVote( @PathVariable String username, @RequestBody VoteOption vote){
-        pollManager.getVotes().put(username, vote);
+        repository.getVotes().put(username, vote);
         return ResponseEntity.ok().body(vote);
     }*/
 }

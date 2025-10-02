@@ -1,8 +1,8 @@
-package com.example.demo;
+package com.example.demo.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,39 +11,49 @@ import java.time.Instant;
 
 import java.time.temporal.ChronoUnit;
 
+@Getter
+@Setter
+@Entity
+@Table(name= "poll")
 public class Poll {
 
-    @Getter
-    @Setter
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Getter
-    @Setter
+
     private String question;
 
-    @Getter
-    private User puplisher;
+    @ManyToOne
+    @JoinColumn(name = "creator_id")
+    private User publisher;
 
-    @Getter
-    @Setter
+    @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
     private List<VoteOption> options;
 
-    @Getter
-    @Setter
+
     private Instant publishedAt;
-    @Getter
-    @Setter
+
     private Instant validUntil;
 
-    public Poll(int id, String question, User puplisher, int validUntil){
-        this.id = id;
+    public Poll(String question, User publisher){
         this.question = question;
         this.options = new ArrayList<>();
         this.publishedAt = Instant.now();
-        this.validUntil = Instant.now().plus(validUntil, ChronoUnit.MINUTES);
-        this.puplisher = puplisher;
-        puplisher.getCreatedPolls().add(this);
+        this.publisher = publisher;
     }
+
+    public Poll(){
+        this.publishedAt = Instant.now();
+
+
+    }
+    public VoteOption addVoteOption(String caption){
+        VoteOption option = new VoteOption(caption,this, options.size());
+        options.add(option);
+        return option;
+    }
+
 
     @Override
     public String toString(){

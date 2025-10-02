@@ -1,5 +1,9 @@
 package com.example.demo;
 
+import com.example.demo.entity.Poll;
+import com.example.demo.entity.User;
+import com.example.demo.entity.Vote;
+import com.example.demo.entity.VoteOption;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
@@ -7,14 +11,11 @@ import java.util.HashMap;
 
 
 @Component
-static class RepositoryComponent {
-
-}
 public class Repository {
     @Getter
-    private HashMap<Integer,User> users;
+    private final HashMap<Integer, User> users;
     @Getter
-    private HashMap<Integer, Poll> polls;
+    private final HashMap<Integer, Poll> polls;
 
     public Repository(){
         this.users = new HashMap<>();
@@ -25,9 +26,9 @@ public class Repository {
         User u2 = new User("test", "test@uib.no");
         this.users.put(this.users.size(), u2);
 
-        Poll p1 = new Poll(1, "what to do today?", u1,2);
-        VoteOption o1 = new VoteOption("chill", p1);
-        VoteOption o2 = new VoteOption("go to the beach", p1);
+        Poll p1 = new Poll("what to do today?", u1);
+        VoteOption o1 = new VoteOption("chill", p1, 1);
+        VoteOption o2 = new VoteOption("go to the beach", p1, 2);
         new Vote(u1, o2);
         new Vote(u2, o2);
 
