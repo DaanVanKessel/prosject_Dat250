@@ -31,6 +31,8 @@ dependencies {
     implementation("org.hibernate.orm:hibernate-core:7.1.1.Final")
     implementation("jakarta.persistence:jakarta.persistence-api:3.2.0")
     implementation("com.h2database:h2:2.3.232")
+    //her is the import for expass5
+    implementation("redis.clients:jedis:6.2.0")
 
     compileOnly("org.projectlombok:lombok:1.18.32")
     annotationProcessor("org.projectlombok:lombok:1.18.32")
