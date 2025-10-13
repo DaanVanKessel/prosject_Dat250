@@ -14,7 +14,7 @@ import java.time.temporal.ChronoUnit;
 @Getter
 @Setter
 @Entity
-@Table(name= "poll")
+@Table(name= "polls")
 public class Poll {
 
     @Id

@@ -26,14 +26,16 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.17.1")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-api:2.6.0")
-
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     //her are the imports for the expass4.md
     implementation("org.hibernate.orm:hibernate-core:7.1.1.Final")
     implementation("jakarta.persistence:jakarta.persistence-api:3.2.0")
     implementation("com.h2database:h2:2.3.232")
     //her is the import for expass5
     implementation("redis.clients:jedis:6.2.0")
-
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.14.1")
+    
+    implementation("com.rabbitmq:amqp-client:5.26.0")
     compileOnly("org.projectlombok:lombok:1.18.32")
     annotationProcessor("org.projectlombok:lombok:1.18.32")
 }

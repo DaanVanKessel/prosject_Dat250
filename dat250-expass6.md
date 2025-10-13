@@ -1,3 +1,21 @@
+13/10
+In particular, you should write about:
+
+    technical problems that you encountered during the completion of the tutorial
+    
+   not many problems.
+
+    
+
+    any pending issues with this assignment which you did not manage to solve
+    i want it to work a bit beter so it is clear when ad how diffrent instaces comunicate
+
+
+
+
+
+
+
 In particular, you should write about:
 
     technical problems that you encountered during the completion of the tutorial
